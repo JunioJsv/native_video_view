@@ -145,12 +145,14 @@ class _NativeVideoViewState extends State<NativeVideoView> {
   Widget _buildVideoView({Widget child}) {
     bool keepAspectRatio = widget.keepAspectRatio ?? false;
     bool showMediaController = widget.showMediaController ?? false;
-    Widget videoView = keepAspectRatio
-        ? AspectRatio(
-            child: child,
-            aspectRatio: _aspectRatio,
-          )
-        : child;
+    Widget videoView = Center(
+      child: keepAspectRatio
+          ? AspectRatio(
+              child: child,
+              aspectRatio: _aspectRatio,
+            )
+          : child,
+    );
     return showMediaController
         ? _MediaController(
             child: videoView,
